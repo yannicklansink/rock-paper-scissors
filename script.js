@@ -10,7 +10,7 @@ function computerPlay() {
     }
 };
 
-function game(playerSelection, computerSelection = computerPlay()) {
+function playRound(playerSelection, computerSelection = computerPlay()) {
     let playerInput = playerSelection.toLowerCase();
     if (playerInput === computerSelection) {
         return `This is a draw... ${playerInput} is equal to ${computerSelection}`
@@ -26,7 +26,18 @@ function game(playerSelection, computerSelection = computerPlay()) {
         return `You Lost! ${computerSelection} beats ${playerInput}`;
     } else if (playerInput === "scissors" && computerSelection === "rock") {
         return `You Lost! ${computerSelection} beats ${playerInput}`;
-    } 
+    }  else {
+        return "Your input was not valid, so you automatically lose, idiot."
+    }
 }
 
-console.log(game("Scissors", computerPlay()));
+function game() {
+    let i = 1;
+    while (i <= 5)  {
+        let userInputPrompt = prompt("Choose: Rock, Paper, Scissors");
+        userInputPrompt.toLowerCase();          
+        console.log(playRound(userInputPrompt, computerPlay()));
+        i++;
+    }
+}
+game();
